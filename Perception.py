@@ -9,6 +9,17 @@ def stepFunction(t):
 
 def prediction(X, W, b):
     return stepFunction((np.matmul(X,W)+b)[0])
+    # or we can use the softmax function
+
+# The function that takes as input a list of numbers, and returns
+# the list of values given by the softmax function.
+def softmax(L):
+    expL = np.exp(L)
+    sumExpL = sum(expL)
+    result = []
+    for i in expL:
+        result.append(i*1.0/sumExpL)
+    return result
 
 # The function receives inputs: the data X, the labels y,
 # the weights W (as an array), and the bias b,
