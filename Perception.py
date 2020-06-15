@@ -21,6 +21,12 @@ def softmax(L):
         result.append(i*1.0/sumExpL)
     return result
 
+# Y represents the category, P represents the probability
+def cross_entropy(Y, P):
+    Y = np.float_(Y)
+    P = np.float_(P)
+    return -np.sum(Y * np.log(P) + (1 - Y) * np.log(1 - P))
+
 # The function receives inputs: the data X, the labels y,
 # the weights W (as an array), and the bias b,
 # The weights and bias W, b, are updated according to the perceptron algorithm,
