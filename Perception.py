@@ -20,6 +20,10 @@ def softmax(L):
     for i in expL:
         result.append(i*1.0/sumExpL)
     return result
+# or:
+# def softmax(L):
+#     expL = np.exp(L)
+#     return np.divide (expL, expL.sum())
 
 # Y represents the category, P represents the probability
 def cross_entropy(Y, P):
