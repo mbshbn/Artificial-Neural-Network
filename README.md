@@ -1,5 +1,5 @@
 # Artificial-Neural-Network
-Here, we start from a simple perception algorithm for a binary classification problem, and improve it to build a neural network.
+Here, we start from a simple perception algorithm for a binary classification problem and improve it to build a neural network.
 
 ## Perception algorithm (logistic regression, binary classification)
 Update the weights and biases for a binary classification problem (the step function is used as the activation function):
@@ -21,7 +21,7 @@ for i in range(len(X)):
 If we use a `stepFunction` as the activation function, the prediction is `0` or `1` indicating false or true.
 It is difficult to optimize using this activation function.
 The error function should be continuous and differentiable to be able to apply gradient descent.
-So, the sigmiod function is a good choice.
+So, the sigmoid function is a good choice.
 If we use the sigmoid function as the activation function, the prediction values are between `0` and `1`, which is the probability of being true or false.
 ```
 def sigmoid(x):
@@ -40,21 +40,21 @@ def softmax(L):
         result.append(i*1.0/sumExpL)
     return result
 ```
-The softmax function for classifications problems with two classes are the same as the sigmoid function.
-For classification problem with 3 or more classes, we need more variables than just `0` and `1`. So, we use the One-Hot encoding.
+The softmax function for classifications problems with two classes is the same as the sigmoid function.
+For a classification problem with 3 or more classes, we need more variables than just `0` and `1`. So, we use One-Hot encoding.
 
-## The error function (cross entropy)
+## The error function (cross-entropy)
 A better model gives a higher value of the multiplication of the independent probabilities of the events/objects in its group.
 To find a better model, maximizing the likelihood is equivalent to minimizing the error function.
-Calculation of products of small numbers (probabilities are between 0 and 1) are problematic due to computational problems.
+The calculation of products of small numbers (probabilities are between 0 and 1) is problematic due to computational problems.
 So, we use natural logarithm function to transfer multiplication to sum.
-Remember, the logarithm of numbers between 0 and 1 are negative, and the logarithm of 1 is zero.
-The result of `-log` is called the cross entropy.
-A better model, has a smaller cross entropy.
-In other words, a correct classified object has a probability close to 1, and its cross entropy `-log(1)` is close to `0`.
-So to find an optimized model, the goal id to decrease the cross entropy.
+Remember, the logarithm of numbers between 0 and 1 is negative, and the logarithm of 1 is zero.
+The result of `-log` is called the cross-entropy.
+A better model has a smaller cross-entropy.
+In other words, a correct classified object has a probability close to 1, and its cross-entropy `-log(1)` is close to `0`.
+So to find an optimized model, the goal id to decrease the cross-entropy.
 
-In the following, cross entropy is calculated for the problem with 2 classes (binary classification problem, or a logistic regression); Y represents the category, P represents the probability
+In the following, cross-entropy is calculated for the problem with 2 classes (binary classification problem, or logistic regression); Y represents the category, P represents the probability
 ```
 def cross_entropy(Y, P):
     Y = np.float_(Y)
@@ -83,25 +83,25 @@ del_w = [ learnrate * error_term * x[0],
 # or del_w = learnrate * error_term * x
 
 ```
-The derivate of sigmoid function is given by
+The derivate of the sigmoid function is given by
 ```
 def sigmoid_prime(x):
     return sigmoid(x) * (1 - sigmoid(x))
 ```
 This is another reason why the sigmoid function is widely used.
 
-Note that the gradient descent in case of the binary classification becomes the same as perception algorithm.
+Note that the gradient descent in the case of the binary classification becomes the same as the perception algorithm.
 For perception, if the point is misclassified, its weights are updated.
 For perception, if a point classified correctly, the output error (y - y-hat) becomes 0, and weights are not changed.
 But in gradient descent, all points are updated.
-For a binary classification, if a point is misclassified, the weights are changed such that the line becomes closer to the point, and if it is classified correctly, the weights are changed such that the line goes further away from the point
+For binary classification, if a point is misclassified, the weights are changed such that the line becomes closer to the point, and if it is classified correctly, the weights are changed such that the line goes further away from the point
 
 ## Nonlinear boundaries (Neural Networks)
 Until here, we assumed the boundaries are linear.
-To solve the problem with nonlinear boundaries, we use the Neural Networks.
-It is actually a multi-layer perceptron.
+To solve the problem with nonlinear boundaries, we use Neural Networks.
+It is a multi-layer perceptron.
 
-The input layer determines the number of dimension.
+The input layer determines the number of dimensions.
 If we have n input, it indicates that the data is in n-dimensional space.
 If we want to have a higher nonlinear boundary, then we can increase the number of nodes in the hidden layer.
 If we add mode hidden layers, then we call it deep neural networks, which result in more nonlinear models.
@@ -129,4 +129,4 @@ output_layer_out = sigmoid(output_layer_in)
 
 
 
-This repo is based on the (Udacity Self-driving car engineering Nanodegree)[https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013] course.
+This repo is based on the [Udacity Self-driving car engineering Nanodegree](https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013) course.
