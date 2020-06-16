@@ -23,7 +23,10 @@ It is difficult to optimize using this activation function.
 The error function should be continuous and differentiable to be able to apply gradient descent.
 So, the sigmiod function is a good choice.
 If we use the sigmoid function as the activation function, the prediction values are between `0` and `1`, which is the probability of being true or false.
-
+```
+def sigmoid(x):
+    return 1/(1+np.exp(-x))
+```
 If we have more classes than simply true or false, then we can normalize the scores (probability should be between 0 and 1).
 Also, the scores need to be positive, so we use the exponential function.
 So, instead of the sigmoid function, we use the softmax function.
@@ -96,7 +99,7 @@ For a binary classification, if a point is misclassified, the weights are change
 ## Nonlinear boundaries (Neural Networks)
 Until here, we assumed the boundaries are linear.
 To solve the problem with nonlinear boundaries, we use the Neural Networks.
-It is actually a multi-layer perceptrons.
+It is actually a multi-layer perceptron.
 
 The input layer determines the number of dimension.
 If we have n input, it indicates that the data is in n-dimensional space.
@@ -104,7 +107,19 @@ If we want to have a higher nonlinear boundary, then we can increase the number 
 If we add mode hidden layers, then we call it deep neural networks, which result in more nonlinear models.
 If we have a multi-class classification problem, the output layer has more than one node. For example, for classification with 3 classes, we have an output layer with 3 nodes.
 
-## Training Neural Networks (Feedforward)
+For training the Neural Networks, we use the feedforward algorithm, which is the calculation of the output based on the weights and sigmoid function applied to the input layer.
+For example, for a network size of `N_input = 4, N_hidden = 3, N_output = 2`, the weight matrices' size are defined as follows:
+`weights_input_to_hidden`  and `weights_hidden_to_output`  are `N_input` by `N_hidden`, and `N_hidden` by `N_output`, respectively.
+The feedforward algorithm is as follows:
+```
+# Hidden_layer output :
+hidden_layer_in = np.dot(X, weights_input_to_hidden)
+hidden_layer_out = sigmoid(hidden_layer_in)
 
+# Output-layer Output:
+output_layer_in = np.dot(hidden_layer_out, weights_hidden_to_output)
+output_layer_out = sigmoid(output_layer_in)
+
+```
 
 This repo is based on the Udacity Self-driving car engineering Nondegree course.
