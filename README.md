@@ -107,19 +107,26 @@ If we want to have a higher nonlinear boundary, then we can increase the number 
 If we add mode hidden layers, then we call it deep neural networks, which result in more nonlinear models.
 If we have a multi-class classification problem, the output layer has more than one node. For example, for classification with 3 classes, we have an output layer with 3 nodes.
 
-For training the Neural Networks, we use the feedforward algorithm, which is the calculation of the output based on the weights and sigmoid function applied to the input layer.
+## Training neural networks
+
+For training the Neural Networks, we use the feedforward and backpropagation algorithms. The feedforward is the calculation of the output based on the weights and sigmoid function applied to the input and hidden layers.
+The backpropagation is running the feedforward operation backwards to spread the error to each of the weights.
 For example, for a network size of `N_input = 4, N_hidden = 3, N_output = 2`, the weight matrices' size are defined as follows:
-`weights_input_to_hidden`  and `weights_hidden_to_output`  are `N_input` by `N_hidden`, and `N_hidden` by `N_output`, respectively.
+`weights_input_to_hidden` and `weights_hidden_to_output` are `N_input` by `N_hidden`, and `N_hidden` by `N_output`, respectively.
 The feedforward algorithm is as follows:
 ```
-# Hidden_layer output :
+# Calculate the input to the hidden layer:
 hidden_layer_in = np.dot(X, weights_input_to_hidden)
+# Calculate the hidden layer output:
 hidden_layer_out = sigmoid(hidden_layer_in)
 
-# Output-layer Output:
+# Calculate the input to the output layer:
 output_layer_in = np.dot(hidden_layer_out, weights_hidden_to_output)
+# Calculate the output layer output:
 output_layer_out = sigmoid(output_layer_in)
 
 ```
 
-This repo is based on the Udacity Self-driving car engineering Nondegree course.
+
+
+This repo is based on the (Udacity Self-driving car engineering Nanodegree)[https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013] course.
