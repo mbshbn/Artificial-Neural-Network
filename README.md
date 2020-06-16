@@ -1,5 +1,10 @@
-# Artificial-Neural-Network
+# Artificial-Neural-Network (ANN)
 Here, we start from a simple perception algorithm for a binary classification problem and improve it to build a neural network.
+But before that, you can see the application of ANN with realtime backpropagation without any prior training on the autonomous control of a quadrotor UAV. This is part of my Ph.D. dissertation:
+But before that, you can see the application of ANN with realtime backpropagation without any prior training on the autonomous control of a quadrotor UAV. This is part of my Ph.D. dissertation:
+But before that, you can see the application of ANN with realtime backpropagation without any prior training on the autonomous control of a quadrotor UAV. This is part of my Ph.D. dissertation:
+[Video of autonomous backflip flight](https://youtu.be/a-DG2PcUu7k), [hover flight](https://www.youtube.com/watch?v=ouSsrDfi8DM), [attitude control(https://www.youtube.com/watch?v=zUsOif1SfEs), [published IEEE paper](https://ieeexplore.ieee.org/document/8619390)  with numerical result and [ArXive paper](https://arxiv.org/pdf/1803.06363.pdf]. 
+
 
 ## Perception algorithm (logistic regression, binary classification)
 Update the weights and biases for a binary classification problem (the step function is used as the activation function):
